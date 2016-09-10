@@ -1,0 +1,24 @@
+<h2>Listing rooms</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for room <- @rooms do %>
+      <tr>
+        <td><%= room.name %></td>
+
+        <td class="text-right">
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link "New room", to: room_path(@conn, :new) %>
+
