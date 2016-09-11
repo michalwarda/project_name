@@ -52,6 +52,7 @@ defmodule ProjectName.Web do
       import ProjectName.Router.Helpers
       import ProjectName.ErrorHelpers
       import ProjectName.Gettext
+      import ProjectName.Session
     end
   end
 

@@ -11,8 +11,9 @@ defmodule ProjectName.RegistrationController do
     changeset = User.changeset(%User{}, user_params)
 
     case ProjectName.Registration.create(changeset) do
-      {:ok, _user} ->
+      {:ok, user} ->
         conn
+        |> put_session(:current_user, user.id)
         |> put_flash(:info, "Your account was created!")
         |> redirect(to: "/rooms")
       {:error, changeset} ->

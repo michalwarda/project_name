@@ -15,3 +15,5 @@ config :project_name, ProjectName.Repo,
   database: "project_name_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+config :comeonin, :bcrypt_log_rounds, 4
