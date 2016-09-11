@@ -4,6 +4,8 @@ defmodule ProjectName.Room do
   schema "rooms" do
     field :name, :string
 
+    has_many :messages, ProjectName.Message
+
     timestamps()
   end
 

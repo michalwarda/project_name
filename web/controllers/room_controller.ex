@@ -12,7 +12,10 @@ defmodule ProjectName.RoomController do
 
   def show(conn, %{"id" => id}) do
     room = Repo.get!(Room, id)
-    render(conn, "show.html", %{room: room})
+    query = from m in ProjectName.Message, where: m.room_id == ^id
+    messages = Repo.all(query) |> Repo.preload(:user)
+
+    render(conn, "show.html", %{room: room, messages: messages})
   end
 
   def delete(conn, %{"id" => id}) do
