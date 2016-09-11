@@ -10,8 +10,9 @@ defmodule ProjectName.RoomController do
     render(conn, "index.html", %{rooms: rooms})
   end
 
-  def show(conn, _params) do
-    render(conn, "show.html")
+  def show(conn, %{"id" => id}) do
+    room = Repo.get!(Room, id)
+    render(conn, "show.html", %{room: room})
   end
 
   def delete(conn, %{"id" => id}) do
