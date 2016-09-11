@@ -3,9 +3,21 @@ defmodule ProjectName.RoomController do
   alias ProjectName.Repo
   alias ProjectName.Room
 
+  plug ProjectName.Plugs.Authenticate
+
   def index(conn, _params) do
     rooms = Repo.all(Room)
     render(conn, "index.html", %{rooms: rooms})
+  end
+
+  def show(conn, _params) do
+    render(conn, "show.html")
+  end
+
+  def delete(conn, %{"id" => id}) do
+    room = Repo.get!(Room, id)
+    Repo.delete!(room)
+    redirect(conn, to: "/rooms")
   end
 
   def new(conn, _params) do
